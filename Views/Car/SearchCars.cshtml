@@ -1,0 +1,41 @@
+﻿
+@{
+    ViewData["Title"] = "SearchCars";
+}
+
+@model List<Car>
+<h1>SearchCars</h1>
+
+<form action="../Car/SearchCars" method="post">
+    <input type="text" name="make" placeholder="Make" />
+    <input type="text" name="model" placeholder="Model" />
+    <input type="text" name="color" placeholder="Color" />
+    <input type="number" name="year" min="1900" max="2100" placeholder="Year" />
+
+    <input type="submit" value="Search" />
+</form>
+
+<br />
+
+@if (Model != null)
+{
+    <table class="table table-bordered">
+        <tr>
+            <th>Make</th>
+            <th>Model</th>
+            <th>Color</th>
+            <th>Year</th>
+        </tr>
+
+        @foreach (Car car in Model)
+        {
+            <tr>
+                <td>@car.make</td>
+                <td>@car.model</td>
+                <td>@car.color</td>
+                <td>@car.year</td>
+                <td><a href="../Car/EditCar?id=@car.id">Edit Car</a></td>
+            </tr>
+        }
+    </table>
+}

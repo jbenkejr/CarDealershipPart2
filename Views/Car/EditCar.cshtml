@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "EditCar";
+}
+
+@model Car
+<h1>EditCar</h1>
+
+<form action="../Car/EditCar" method="post">
+    <input type="hidden" name="id" value="@Model.id" />
+    <table class="table table-bordered">
+        <tr>
+            <th>Make</th>
+            <td><input type="text" name="make" value="@Model.make" required /></td>
+        </tr>
+        <tr>
+            <th>Model</th>
+            <td><input type="text" name="model" value="@Model.model" required /></td>
+        </tr>
+        <tr>
+            <th>Color</th>
+            <td><input type="text" name="color" value="@Model.color" required /></td>
+        </tr>
+        <tr>
+            <th>Year</th>
+            <td><input type="number" name="year" min="1900" max="@(DateTime.Now.Year + 2)" value="@Model.year" /></td>
+        </tr>
+    </table>
+    <input type="submit" value="Update Car" />
+</form>
